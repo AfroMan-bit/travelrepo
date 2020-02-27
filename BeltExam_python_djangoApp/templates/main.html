@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h3>Welcome</h3>
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}            
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>New Traveller Registration</h4>
+                <form action="/register" method="post">
+                    {% csrf_token %}
+                    <label>Name</label>
+                    <input type="text" name="form_name" id="" class= form-control>
+                    <label>Username</label>
+                    <input type="text" name="form_user_name" id="" class= form-control>
+                    <label>Password</label>
+                    <input type="password" name="form_password" id="" class= form-control>
+                    <label>Confirm Password</label>
+                    <h6>*Password should be atleast 8 characters*</h6>
+                    <input type="password" name="form_confirm_password" id="" class= form-control>
+                    <br>
+                    <input type="submit" value="Register" class="btn btn-success">
+                </form>
+            </div>
+            <div class="col-sm-6">
+                <h4>Traveller Log In</h4>
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <label>Username</label>
+                    <input type="text" name="form_user_name" id="" class= form-control>
+                    <label>Password</label>
+                    <input type="password" name="form_password" id="" class= form-control>
+                    <br>
+                    <input type="submit" value="Log In" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

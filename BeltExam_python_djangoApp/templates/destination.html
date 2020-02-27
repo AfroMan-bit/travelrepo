@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Destination Information</h1>
+            <br><br>
+            <h6><a href="/travels">Home</a></h6>
+            <h6><a href="/logout">Logout</a></h6>
+        </div>
+        <!-- key from context dictionary.fieldname -->
+        <h4>Visit to {{ travelInfo.destination }}</h4>
+        <p>Planned By: {{ travelInfo.added_by.name }}</p>
+        <p>Description: {{ travelInfo.desc }}</p>
+        <p>Travel Date From: {{ travelInfo.travel_start }}</p>
+        <p>Travel Date To: {{ travelInfo.travel_end }}</p>
+        <br>
+        <h4>Other Travellers Joining the trip:</h4>
+        {% for user in travelInfo.plans.all %}
+            <p>{{ user.name }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
