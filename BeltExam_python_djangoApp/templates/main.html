@@ -4,49 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/stylemain.css' %}">    
+    <script src="{% static 'js/script.js' %}"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="jumbotron">
-            <h3>Welcome</h3>
+        <div class="container">
+        <div class="jumbotron" style= "background-color: black; opacity: .8;">
+            <h1 style= "color: wheat; text-align: center;">W e l c o m e <br> T o <br> T r a v e l P l a n n e r</h1>
+            <br>
+            <br>
+            <br>
             {% if messages %}
             <ul class="messages">    
                 {% for message in messages %}    
-                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    <li style= "color: red;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
                 {% endfor %}
             </ul>
             {% endif %}            
-        </div>
+        <!-- </div> -->
         <div class="row">
-            <div class="col-sm-6">
-                <h4>New Traveller Registration</h4>
+            <div class="col-sm-4" style= "background-color: grey;">
+                <br>
+                <br>
+                <br>
+                <h2 style= "color: wheat; text-align: center;">New Traveller Registration</h2>
+                <br>
+                <br>
                 <form action="/register" method="post">
                     {% csrf_token %}
-                    <label>Name</label>
+                    <label style= "color: wheat;">Name</label>
                     <input type="text" name="form_name" id="" class= form-control>
-                    <label>Username</label>
+                    <label style= "color: wheat;">Username</label>
                     <input type="text" name="form_user_name" id="" class= form-control>
-                    <label>Password</label>
+                    <label style= "color: wheat;">Password</label>
                     <input type="password" name="form_password" id="" class= form-control>
-                    <label>Confirm Password</label>
-                    <h6>*Password should be atleast 8 characters*</h6>
+                    <br>
+                    <label style= "color: wheat;">Confirm Password</label>
+                    <h6 style= "color: wheat;">*Password should be atleast 8 characters*</h6>
                     <input type="password" name="form_confirm_password" id="" class= form-control>
                     <br>
                     <input type="submit" value="Register" class="btn btn-success">
                 </form>
             </div>
-            <div class="col-sm-6">
-                <h4>Traveller Log In</h4>
+            <div class="col-sm-4">
+
+            </div>
+            <div class="col-sm-4" style= "background-color: grey;">
+                <br>
+                <br>
+                <br>
+                <h2 style= "color: wheat; text-align: center;">Traveller Log In</h2>
+                <br>
+                <br>
                 <form action="/login" method="post">
                     {% csrf_token %}
-                    <label>Username</label>
+                    <label style= "color: wheat;">Username</label>
                     <input type="text" name="form_user_name" id="" class= form-control>
-                    <label>Password</label>
+                    <label style= "color: wheat;">Password</label>
                     <input type="password" name="form_password" id="" class= form-control>
                     <br>
                     <input type="submit" value="Log In" class="btn btn-primary">
                 </form>
+                <!-- <img style="border-radius: 8px; filter: grayscale(0%); width: 100%;" src="{% static 'img/me.jpg' %} " /> -->
+                
             </div>
         </div>
     </div>

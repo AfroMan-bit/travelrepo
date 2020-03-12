@@ -4,27 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styledestination.css' %}">    
+    <script src="{% static 'js/script.js' %}"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Destination Information</h1>
-            <br><br>
-            <h6><a href="/travels">Home</a></h6>
-            <h6><a href="/logout">Logout</a></h6>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/travels">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/logout">Log Out <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
         </div>
-        <!-- key from context dictionary.fieldname -->
-        <h4>Visit to {{ travelInfo.destination }}</h4>
-        <p>Planned By: {{ travelInfo.added_by.name }}</p>
-        <p>Description: {{ travelInfo.desc }}</p>
-        <p>Travel Date From: {{ travelInfo.travel_start }}</p>
-        <p>Travel Date To: {{ travelInfo.travel_end }}</p>
-        <br>
-        <h4>Other Travellers Joining the trip:</h4>
-        {% for user in travelInfo.plans.all %}
-            <p>{{ user.name }}</p>
-        {% endfor %}
+    </nav>
+    <div class="container">
+        <div class="jumbotron" style= "background-image: url('/static/img/main.png'); background-repeat: no-repeat; background-size: 100% 100%;">
+            <h1 style= "color: white; ">Destination Information</h1>
+            <br>
+            <br>
+            <br>
+        </div>
+        <div class="col-sm-12" style= "background-color: black; opacity: .5;">
+            <br>
+            <br>
+            <!-- key from context dictionary.fieldname -->
+            <h4 style= "color: white;">Visit to {{ travelInfo.destination }}</h4>
+            <p style= "color: white;">Planned By: {{ travelInfo.added_by.name }}</p>
+            <p style= "color: white;">Description: {{ travelInfo.desc }}</p>
+            <p style= "color: white;">Travel Date From: {{ travelInfo.travel_start }}</p>
+            <p style= "color: white;">Travel Date To: {{ travelInfo.travel_end }}</p>
+            <br>
+            <h4 style= "color: white;">Other Travellers Joining the trip:</h4>
+            {% for user in travelInfo.plans.all %}
+                <p style= "color: white;">{{ user.name }}</p>
+            {% endfor %}
+            <br>
+            <br>
+        </div>
     </div>
 </body>
 </html>
