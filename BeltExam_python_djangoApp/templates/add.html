@@ -29,8 +29,9 @@
             <br>         
             <br>
         </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
             <div class="col-sm-4" style= "background-color: black; opacity: .8;" >
-            <br>         
             <br>
                 <form action="/addtrip" method="post">
                     {% csrf_token %}
@@ -50,18 +51,22 @@
                         <label style= "color: white;">Travel Date To</label>
                         <input type="date" name="form_travel_end" id="" class="form-control" >
                     </div>
-                    <input type="submit" value= "Add" class="btn btn-primary" > 
-                </form>  
+                    <input type="submit" value= "Add" class="btn btn-primary" >
+                    <br>         
+                    <br> 
+                </form>
+                    {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li style= "color: red;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+                {% endif %}  
             </div>
             <div class="col-sm-4">
-                {% if messages %}
-            <ul class="messages">    
-                {% for message in messages %}    
-                    <li style= "color: red;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
-                {% endfor %}
-            </ul>
-            {% endif %}  
+                  
             </div>
+        </div>
     </div>
 </body>
 </html>

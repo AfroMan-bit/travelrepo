@@ -14,8 +14,6 @@
         <div class="jumbotron" style= "background-color: black; opacity: .8;">
             <h1 style= "color: wheat; text-align: center;">W e l c o m e <br> T o <br> T r a v e l P l a n n e r</h1>
             <br>
-            <br>
-            <br>
             {% if messages %}
             <ul class="messages">    
                 {% for message in messages %}    
@@ -23,14 +21,10 @@
                 {% endfor %}
             </ul>
             {% endif %}            
-        <!-- </div> -->
         <div class="row">
             <div class="col-sm-4" style= "background-color: grey;">
                 <br>
-                <br>
-                <br>
                 <h2 style= "color: wheat; text-align: center;">New Traveller Registration</h2>
-                <br>
                 <br>
                 <form action="/register" method="post">
                     {% csrf_token %}
@@ -46,14 +40,14 @@
                     <input type="password" name="form_confirm_password" id="" class= form-control>
                     <br>
                     <input type="submit" value="Register" class="btn btn-success">
+                    <br>
+                    <br>
                 </form>
             </div>
             <div class="col-sm-4">
 
             </div>
             <div class="col-sm-4" style= "background-color: grey;">
-                <br>
-                <br>
                 <br>
                 <h2 style= "color: wheat; text-align: center;">Traveller Log In</h2>
                 <br>
@@ -66,9 +60,7 @@
                     <input type="password" name="form_password" id="" class= form-control>
                     <br>
                     <input type="submit" value="Log In" class="btn btn-primary">
-                </form>
-                <!-- <img style="border-radius: 8px; filter: grayscale(0%); width: 100%;" src="{% static 'img/me.jpg' %} " /> -->
-                
+                </form>               
             </div>
         </div>
     </div>
