@@ -3,10 +3,9 @@
 }
 
 body{
-    background-image: url('/static/img/main.jpg');
+    background-image: url('/static/img/home.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-    
 }
 

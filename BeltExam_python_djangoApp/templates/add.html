@@ -6,9 +6,14 @@
     <title>Document</title>
     {% load static %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'css/styleadd.css' %}">    
+    <link rel="stylesheet" href="{% static 'css/styleadd.css' %}"> 
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
 </head>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -23,50 +28,53 @@
         </div>
     </nav>
     <div class="container">
-        <div class="jumbotron" style= "background-image: url('/static/img/postcard.jpg'); background-repeat: no-repeat; background-size: 100% 100%;">
-            <h1 style= "color: white; ">Add a Trip</h1>
-            <br>
-            <br>         
-            <br>
+        <div class="box-1 wow bounceInUp center" data-wow-duration="2s" data-wow-delay="0s">
+            <div class="jumbotron" style= "background-image: url('/static/img/postcard.jpg'); background-repeat: no-repeat; background-size: 100% 100%;">
+                <h1 class="display-4" style= "color: white; text-align: center; ">Add a Trip</h1>
+                <br> 
+            </div>
         </div>
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4" style= "background-color: black; opacity: .8;" >
-            <br>
-                <form action="/addtrip" method="post">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label style= "color: white;">Destination</label>
-                        <input type="text" name="form_destination" id="" class="form-control" >
+        <div class="box-1 wow bounceInUp center" data-wow-duration="4s" data-wow-delay="0s">
+            <form action="/addtrip" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm-6" style= "background-color: black; opacity: .8;" >
+                    <br>           
+                        <div class="form-group">
+                            <label style= "color: white;">Destination</label>
+                            <input type="text" name="form_destination" placeholder="Where to?"id="" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label style= "color: white;">Description</label>
+                            <input type="text" name="form_desc" placeholder="Please add comment" id="" class="form-control" >
+                            <br>
+                            {% if messages %}
+                                <ul class="messages">    
+                                    {% for message in messages %}    
+                                        <li style= "color: red;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label style= "color: white;">Description</label>
-                        <input type="text" name="form_desc" placeholder="Please add comment" id="" class="form-control" >
+                    <div class="col-sm-6" style= "background-color: black; opacity: .8;" >
+                    <br>
+                        <div class="form-group">
+                            <label style= "color: white;">Travel Date From</label>
+                            <input type="date" name="form_travel_start" id="" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label style= "color: white;">Travel Date To</label>
+                            <input type="date" name="form_travel_end" id="" class="form-control" >
+                        </div>
+                        <input style= "width: 100%;" type="submit" value= "Add" class="btn btn-primary" >
+                        <br>
+                        <br>
                     </div>
-                    <div class="form-group">
-                        <label style= "color: white;">Travel Date From</label>
-                        <input type="date" name="form_travel_start" id="" class="form-control" >
-                    </div>
-                    <div class="form-group">
-                        <label style= "color: white;">Travel Date To</label>
-                        <input type="date" name="form_travel_end" id="" class="form-control" >
-                    </div>
-                    <input type="submit" value= "Add" class="btn btn-primary" >
-                    <br>         
-                    <br> 
-                </form>
-                    {% if messages %}
-                <ul class="messages">    
-                    {% for message in messages %}    
-                        <li style= "color: red;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
-                    {% endfor %}
-                </ul>
-                {% endif %}  
-            </div>
-            <div class="col-sm-4">
-                  
-            </div>
+                </div>         
+            </form>
         </div>
     </div>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

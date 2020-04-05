@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/styledestination.css' %}">    
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -23,29 +27,41 @@
         </div>
     </nav>
     <div class="container">
-        <div class="jumbotron" style= "background-image: url('/static/img/main.png'); background-repeat: no-repeat; background-size: 100% 100%;">
-            <h1 style= "color: white; ">Destination Information</h1>
-            <br>
-            <br>
-            <br>
+        <div class="box-1 wow bounceInUp center" data-wow-duration="2s" data-wow-delay="0s">
+            <div class="jumbotron" style= "background-image: url('/static/img/main.png'); background-repeat: no-repeat; background-size: 100% 100%;">
+                <h1 class="display-4" style= "color: white; text-align: left; ">Destination <br> Information</h1>
+            </div>
         </div>
-        <div class="col-sm-12" style= "background-color: black; opacity: .5;">
-            <br>
-            <br>
-            <!-- key from context dictionary.fieldname -->
-            <h4 style= "color: white;">Visit to {{ travelInfo.destination }}</h4>
-            <p style= "color: white;">Planned By: {{ travelInfo.added_by.name }}</p>
-            <p style= "color: white;">Description: {{ travelInfo.desc }}</p>
-            <p style= "color: white;">Travel Date From: {{ travelInfo.travel_start }}</p>
-            <p style= "color: white;">Travel Date To: {{ travelInfo.travel_end }}</p>
-            <br>
-            <h4 style= "color: white;">Other Travellers Joining the trip:</h4>
-            {% for user in travelInfo.plans.all %}
-                <p style= "color: white;">{{ user.name }}</p>
-            {% endfor %}
-            <br>
-            <br>
+        <div class="box-1 wow bounceInUp center" data-wow-duration="4s" data-wow-delay="0s">
+            <div class= "row" style= "background-color: black; opacity: .8;">
+            
+                <div class="col-sm-12" >
+                    <br>
+                    <!-- key from context dictionary.fieldname -->
+                    <h4 class="display-4" style= "color: white;  text-align: center;">Visit to {{ travelInfo.destination }}</h4>
+                    <br>
+                </div>
+                <div class="col-sm-8" >
+                    <h6 style= "color: white;">Planned by: {{ travelInfo.added_by.name }}</h6>
+                    <br>
+                    <h6 style= "color: white;">Description: {{ travelInfo.desc }}</h6>
+                    <br>
+                    <h6 style= "color: white;">Travel Date From: {{ travelInfo.travel_start }}</h6>
+                    <br>
+                    <h6 style= "color: white;">Travel Date To: {{ travelInfo.travel_end }}</h6>
+                    <br>
+                </div>
+                <div class="col-sm-4">
+                    <h6 style= "color: white; text-align: center;">Other Travellers Joining the trip</h6>
+                        {% for user in travelInfo.plans.all %}
+                            <p style= "color: white; text-align: center;">{{ user.name }}</p>
+                        {% endfor %}
+                        <br>
+                        <br>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
